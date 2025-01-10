@@ -14,7 +14,8 @@ import ChatIcon from "@mui/icons-material/Chat";
 import styles from "../styles/videoComponent.module.css"; // Ensure this file exists and is correctly referenced.
 import io from "socket.io-client";
 import CallEnd from "@mui/icons-material/CallEnd";
-const server_url = "http://localhost:8000"; // Backend server URL.
+import server from "../enviorment";
+const server_url = server; // Backend server URL.
 
 let connections = {}; // To store peer connections.
 

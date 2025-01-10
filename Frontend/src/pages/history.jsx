@@ -8,9 +8,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import axios from 'axios';
 import { IconButton } from '@mui/material';
 import "../styles/History.css"; // Importing custom CSS for styling
+import server from '../enviorment.js'; // Importing server configuration
 
 export default function History() {
-    const { getHistoryOfUser } = useContext(AuthContext);  // Context for auth
+    const { getHistoryOfUser } = useContext(AuthContext); // Context for auth
     const [meetings, setMeetings] = useState([]); // State to store meetings
     const routeTo = useNavigate();
 
@@ -18,7 +19,7 @@ export default function History() {
         const fetchHistory = async () => {
             try {
                 const token = localStorage.getItem("token"); // Get token from local storage
-                const response = await axios.get("http://localhost:8000/api/v1/users/get_all_activity", {
+                const response = await axios.get(`${server}/api/v1/users/get_all_activity`, {
                     params: { token: token }
                 });
                 console.log("History fetched successfully:", response.data);
